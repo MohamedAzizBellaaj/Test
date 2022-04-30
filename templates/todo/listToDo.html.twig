@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css">
+		<title>ToDo</title>
+	</head>
+	<body>
+		<div class="container">
+			{% for key,value in app.session.flashBag.get('welcome') %}
+				<div class="alert alert-info" role="alert">
+					{{value}}
+				</div>
+			{% endfor %}
+
+			{% for key,value in app.session.flashBag.get('success') %}
+				<div class="alert alert-success" role="alert">
+					{{value}}
+				</div>
+			{% endfor %}
+
+			{% for key,value in app.session.flashBag.get('error') %}
+				<div class="alert alert-danger" role="alert">
+					{{value}}
+				</div>
+			{% endfor %}
+			<h1>ToDo list</h1>
+			<ol class="list-group">
+				{% for key,value in app.session.get('todo') %}
+					<li class="list-group-item">{{key}}
+						:
+						{{value}}</li>
+				</ol>
+			{% endfor %}
+		</div>
+	</body>
+</html>
